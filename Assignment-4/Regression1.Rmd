@@ -1,0 +1,35 @@
+## Regression Example Excercise
+
+# Read data from the csv file
+```{r}
+setwd("/Users/anagesh/Documents/H1B-Docs/CTU Docs/Courses - Sem3/Big Data/Labs")
+mydata<-read.csv("Ozone_data.csv")
+```
+
+# get the summary and linear model
+```{r}
+summary(lm(Ozone ~ Temp+Wind, data = mydata))
+```
+## Inference : Linear equation
+### Ozone = 1.8Temp - 3.2Wind -67
+### R2 value is 0.51
+### Ozone is directly proportional to temperature and indirectly proportional to wind
+
+# draws a correlation plot
+```{r}
+pairs(mydata)
+```
+
+# calculates the Pearson's correlation efficient
+```{r}
+cor(mydata)
+```
+### Inference
+### From the plot, it shows that increase in solar value increases ozone ( same with 
+### temp) and increase in value of wind, decreases solar value
+
+# confindence interval
+```{r}
+model1 = lm(Ozone ~ Temp+Wind+Temp*Wind, data=mydata)
+confint(model1, conf.level=0.95)
+```
